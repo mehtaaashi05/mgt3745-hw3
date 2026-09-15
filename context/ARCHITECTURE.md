@@ -28,13 +28,13 @@ Feature under the gate: F-01, the opt-in directory. Employees opt themselves in 
 | Inspectability | 5|5 - 25|1 - 5|2 - 10|
 | Switching cost | 2|5 - 10|2 - 4|3 - 6|
 | Fit to spec | 4|5 - 20|2 - 8|4 - 16|
-| Total | |97|50|86|
+| Total | |97|44|86|
 
 Weight Rationale: Inspectability and time-to-working are tied for the top weight (5) because the deadline is real and the course specifically grades wether I can explain what I built. Cost to start and fit to spec are next (4) because the budget is zero and F-01's acceptance criteria are already written and specific. Switching cost is weighted lowest (2) because a system like this does not exist already at the company and being locked in later matters far less than it would for a production system. 
 
 Buy fit note: F-01 is a directory with opt-in/opt-out, which off-the-shelf tools could technically approximate, but none would natively enforce "removed from intern-visible results within 1 minute of opting out" or enforcing the informal-conversation only framing baked into the spec, hece the low fit-to-spec score.
 
-Sensitivity check: If inspectability's weight drops from 5 to 2 (if I assume I become confident auditing AI-generated code), the totals become Build 82, Buy 40, Delegate 80. Build still is the biggest, but only barely, which shows the decision is fairly robust but hinges specifically on how much inspectability is weighted, not on any other criterion being lopsided. 
+Sensitivity check: If inspectability's weight drops from 5 to 2 (if I assume I become confident auditing AI-generated code), the totals become Build 82, Buy 41, Delegate 80. Build still is the biggest, but only barely, which shows the decision is fairly robust but hinges specifically on how much inspectability is weighted, not on any other criterion being lopsided. 
 
 ## ADR-001
 
