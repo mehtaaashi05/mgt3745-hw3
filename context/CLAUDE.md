@@ -14,3 +14,8 @@ Colleague test:
 - The revision I made: I added a concrete example to the commit-message rule so the agent has a clearer target: "keep note text after a failed save."
 
 Root `CLAUDE.md` imports this file for Claude Code. VS Code Copilot uses the separate `.github/copilot-instructions.md` adapter. A location under `/context` alone is not a guarantee of automatic discovery.
+
+### Colleague test
+- Who read it?: Regina
+- What they misunderstood or asked about?: She was confused by what a user-visible result meant and thought an example would help.
+- The revision I made: I added a concrete example to the commit-message rule so the agent has a clearer target: "keep note text after a failed save."
