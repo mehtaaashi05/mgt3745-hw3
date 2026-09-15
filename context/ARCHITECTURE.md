@@ -23,7 +23,7 @@ Feature under the gate: F-01, the opt-in directory. Employees opt themselves in 
 | Criterion | Weight | Hand-built option | Existing-service option | AI-assisted build |
 |---|---:|---:|---:|---:|
 | Cost to start | 4|3- 12|1- 4|5- 20 |
-| Cost to maintain |3| 5 - 15|1 - 9|5- 15 |
+| Cost to maintain |3| 5 - 15|1 - 3|5- 15 |
 | Time to working | 5|3 - 15|4 - 20|5- 25 |
 | Inspectability | 5|5 - 25|1 - 5|2 - 10|
 | Switching cost | 2|5 - 10|2 - 4|3 - 6|
