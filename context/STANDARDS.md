@@ -2,11 +2,24 @@
 
 Status: ACTIVE in Module 3. Adapt these rules to your feature and follow them.
 
-1. Use descriptive camelCase identifiers. Short conventional event/index names are acceptable when their role is obvious; arbitrary minimum name lengths are unnecessary.
-2. Separate HTML, CSS, and JavaScript into index.html, styles.css, and app.js. Use lexical scope; do not create accidental global variables.
-3. Explain important reasons in comments, not a narration of every statement. Remove temporary debug output before submission.
-4. Write commit messages that name the changed behavior and purpose.
-5. Use textContent for user text. Never insert user strings through innerHTML.
-6. Associate form controls with labels and make success/error feedback perceivable. Preserve unsaved input when a write fails.
+1. In `app.js`, use names that distinguish the directory's roles: `notes` is the saved list, `candidate` is the submitted value, and `nextNotes` is the proposed replacement; do not collapse these meanings into names such as `data` or `value`.
+2. Put user-facing elements and their initial attributes in `index.html`, visual states in `styles.css`, and storage or interaction decisions in `app.js`; a feature is incomplete when its logic is split across those ownership boundaries.
+3. Comment the directory's invariants when they could be accidentally broken, especially that storage succeeds before the interface changes; leave self-evident DOM operations uncommented.
+4. Begin each commit message with an action verb and name the user-visible result, using a form such as `Keep note text after a failed save` rather than a vague message like `Update files`.
+5. Do not turn note text into an HTML string: `innerHTML`, `outerHTML`, and `insertAdjacentHTML` are forbidden for note content; create elements and assign text through DOM APIs instead.
 
-This file is normative if an adapter or context/CLAUDE.md conflicts. Repair inconsistent copies; do not silently choose different policies for humans and agents.
+This document is the source of truth.
+
+Split Test:
+
+Rule 1: role-distinguishing names (`notes`, `candidate`, `nextNotes`). This applies to every task that touches these variables, and it does not change from task to task. If it lived only in a one-off prompt, the risk is Confusion: a later task could reintroduce a generic name like `data` and nothing would catch the drift back toward ambiguity. Verdict: belongs in `CLAUDE.md`.
+
+Rule 3: comment invariants that could be accidentally broken and leave the obvious uncommented. This also applies to every task that touches app.js logic, and it does not change from task to task. If it were not persistent, the risk is Distraction: without a standing reminder of which things deserve a comment, an agent tends to either comment everything or comment nothing, and the actual invariant is exactly the kind of thing that is easy to break without a rule keeping it visible. Verdict: belongs in `CLAUDE.md`.
+
+Rule 5: no `innerHTML`, `outerHTML`, or `insertAdjacentHTML` for note content. This only matters for tasks that render note text to the page. If it stays in `CLAUDE.md` permanently, the risk is Distraction: attention gets spent evaluating a security rule against tasks it has no say on. This is the rule I am moving out. Verdict: belongs in the prompt for the specific task that needs it.
+
+Prompt snippet:
+
+> When rendering user-entered note text, use DOM APIs and `textContent`; do not use `innerHTML`, `outerHTML`, or `insertAdjacentHTML` on note content.
+
+If this file and `CLAUDE.md` ever disagree, `STANDARDS.md` is normative — repair the inconsistent one rather than following each separately.

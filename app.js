@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const storageKey = 'mgt3745.notes.v617';
+  const storageKey = 'mgt3745.directory.v1';
   const noteForm = document.querySelector('#note-form');
   const noteInput = document.querySelector('#note-input');
   const noteList = document.querySelector('#note-list');
@@ -21,7 +21,7 @@
       }
       return parsed;
     } catch {
-      saveStatus.textContent = 'Saved notes could not be read. Original storage was left unchanged. A successful new save will replace it.';
+      saveStatus.textContent = 'The directory could not be read. Original storage was left unchanged. A successful new entry will replace it.';
       return [];
     }
   }
@@ -46,20 +46,32 @@
       const listItem = document.createElement('li');
       const noteText = document.createElement('span');
       noteText.textContent = note;
+      const requestButton = document.createElement('button');
+      requestButton.type = 'button';
+      requestButton.textContent = 'Request a conversation';
+      requestButton.setAttribute('aria-label', `Request a conversation with ${note}`);
+      const requestConfirmation = document.createElement('p');
+      requestConfirmation.hidden = true;
+      requestConfirmation.setAttribute('role', 'status');
+      requestButton.addEventListener('click', () => {
+        requestButton.disabled = true;
+        requestConfirmation.textContent = 'Conversation request sent. This is informational and non-committal.';
+        requestConfirmation.hidden = false;
+      });
       const deleteButton = document.createElement('button');
       deleteButton.type = 'button';
-      deleteButton.textContent = 'Delete';
-      deleteButton.setAttribute('aria-label', `Delete note ${index + 1}: ${note}`);
+      deleteButton.textContent = 'Opt out';
+      deleteButton.setAttribute('aria-label', `Opt out: ${note}`);
       deleteButton.addEventListener('click', () => {
         const nextNotes = notes.filter((entry, entryIndex) => entryIndex !== index);
         if (!saveNotes(nextNotes)) return;
         notes = nextNotes;
         noteError.textContent = '';
         renderNotes();
-        saveStatus.textContent = 'Note deleted.';
+        saveStatus.textContent = 'Removed from the directory.';
         noteInput.focus();
       });
-      listItem.append(noteText, deleteButton);
+      listItem.append(noteText, requestButton, deleteButton, requestConfirmation);
       noteList.append(listItem);
     });
   }
@@ -69,7 +81,7 @@
     const candidate = noteInput.value.trim();
     const characterCount = Array.from(candidate).length;
     if (characterCount < 1 || characterCount > 200) {
-      noteError.textContent = 'Enter a note containing 1–200 characters.';
+      noteError.textContent = 'Enter a directory entry containing 1–200 characters.';
       noteInput.setAttribute('aria-invalid', 'true');
       saveStatus.textContent = '';
       noteInput.focus();
@@ -83,7 +95,7 @@
     renderNotes();
     noteInput.value = '';
     noteInput.focus();
-    saveStatus.textContent = 'Note saved in this browser.';
+    saveStatus.textContent = 'Added to the directory.';
   });
 
   renderNotes();

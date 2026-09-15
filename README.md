@@ -1,26 +1,19 @@
-# [Project Name]
+# Opt-in Conversation Directory
 
 <!-- Badges are optional but cheap. shields.io generates them from a URL. -->
 ![Status](https://img.shields.io/badge/status-in%20progress-yellow)
 ![Module](https://img.shields.io/badge/MGT%203745-HW3-051E39)
 
-> HW3, MGT 3745 O. Replace every [bracketed prompt] with your own writing.
-> Lines between `<!--` and `-->` are notes to you. They are invisible on GitHub. Delete them when done.
-> This README is the first thing an employer, a teammate, or an agent reads. It makes
-> a case for the repository. Show, then tell.
+> HW3, MGT 3745 O. A small static prototype for finding an opted-in employee who is willing to have an informal conversation with an intern.
+
 
 ## What
 
-Replace this title and paragraph with your chosen feature and link [PROJECT.md](context/PROJECT.md) and [FEATURES.md](context/FEATURES.md). This runnable "meeting notes" application is a teaching starter, not a completed student submission. Adapt it to your researched feature and make a meaningful change you can explain.
+This project adapts the supplied meeting-notes starter into an opt-in directory. An employee can add a short directory entry, an intern can request an informational conversation, and the employee can opt out again. The feature scope and acceptance criteria are documented in [PROJECT.md](context/PROJECT.md) and [FEATURES.md](context/FEATURES.md).
 
 ## See It Work
 
-<!-- REQUIRED: at least one image or GIF of the feature meeting an EARS statement.
-     Put media in the docs/ folder. Keep GIFs under 5 MB.
-     Record: macOS Cmd+Shift+5, Windows Win+Alt+R or Snipping Tool video. Convert at ezgif.com.
-     Markdown image syntax: -->
-Put a screenshot or GIF under docs/ and link it here with descriptive alt text. Explain which acceptance criterion it demonstrates. A screenshot does not prove reload or storage behavior by itself.
-![Saving an entry and seeing it appear in the list](docs/demo.gif)
+There is a file under docs named Photo Evidence for Opt-in Directory that contains a photo evidence. Here is a link to it: ![alt text](<docs/Photo Evidence for Opt-in Directory.png>)
 
 <!-- HTML gives you sizing control markdown does not: -->
 <!-- <img src="docs/screenshot.png" width="480" alt="The entry list after three saves"> -->
@@ -48,40 +41,48 @@ If Live Server is unavailable, run `node scripts/serve.mjs` in the terminal, the
 
 ```mermaid
 flowchart TD
- A[Page opens] --> B[loadNotes: read and validate localStorage]
-  B --> C[renderNotes: draw current state]
-  D[User submits entry] --> E{Trimmed input is 1 to 200 characters?}
-  E -->|No| F[Show validation error and keep input]
-  E -->|Yes| G[Create proposed notes array]
-  G --> H{saveNotes: storage write succeeds?}
-  H -->|No| I[Show save error; keep input and current list]
-  H -->|Yes| J[Update in-memory notes]
-  J --> K[renderNotes: redraw list]
-  K --> L[Clear input and announce saved]
+     A[Page opens] --> B[loadNotes: read and validate localStorage]
+     B -->|Read failure| C[Show warning and use an empty in-memory list]
+     B -->|Read succeeds| D[renderNotes: show opted-in entries]
+     C --> D
+     E[Employee submits an entry] --> F{Trimmed entry is 1 to 200 characters?}
+     F -->|No| G[Show validation error and keep input]
+     F -->|Yes| H[Create proposed notes array]
+     H --> I{saveNotes: storage write succeeds?}
+     I -->|No| J[Show save error and keep input and current list]
+     I -->|Yes| K[Update notes and render the directory]
+     K --> L[Clear input and announce that the entry was added]
+     D --> M{Intern chooses an entry action}
+     M -->|Request a conversation| N[Show informational, non-committal confirmation]
+     M -->|Opt out| O[Create a proposed list without that entry]
+     O --> P{Storage write succeeds?}
+     P -->|No| J
+     P -->|Yes| Q[Update notes and remove the entry from the list]
 ```
 
-This diagram describes the starter's load-and-add flow. Update it to match your implementation. In `app.js`, `loadNotes` reads stored data, `saveNotes` attempts to persist a proposed state, and `renderNotes` draws the current state using `textContent` for user text. The submit handler validates input and updates the visible state only after a successful save. Delete also saves the proposed state before redrawing. A read failure shows a warning and starts with an empty in-memory list; it leaves the original storage unchanged until a successful new save replaces it.
+In `app.js`, `loadNotes` reads and validates the browser-local list, `saveNotes` persists a proposed state, and `renderNotes` draws each opted-in entry. The submit handler validates the trimmed entry and updates the visible state only after a successful save. Each rendered entry has a request button that displays an informational, non-committal confirmation, plus an opt-out button that removes the entry. A read failure shows a warning and starts with an empty in-memory list; it leaves the original storage unchanged until a successful new save replaces it.
 
 ## Status
 
 | Area | State | Why |
 |------|-------|-----|
-| Save and display | [Works / Partial / Broken / Not tested] | [Link your verification evidence] |
-| Invalid input | [Works / Partial / Broken / Not tested] | [Link your verification evidence] |
-| Data survives reload / storage failure | [Works / Partial / Broken / Not tested] | [Link your verification evidence] |
-| Multi-user sync (starter limitation) | Deferred | Browser-local storage does not provide sync. Explain your own scope and decision in [ADR-001](context/ARCHITECTURE.md). |
-
+| Save and display | Works | The implementation writes to `localStorage` in `saveNotes` and redraws the directory in `renderNotes` in [app.js](app.js). |
+| Invalid input | Works | The submit handler rejects entries shorter than 1 character or longer than 200 characters and keeps the input in place in [app.js](app.js). |
+| Storage read and save failure handling | Partially verified | `loadNotes` warns on unreadable or invalid stored data without altering the original storage, and `saveNotes` stops a write when the `?failSave` switch is present. The browser-level result still needs to be recorded. |
+| Multi-user sync (starter limitation) | Deferred | Browser-local storage is intentionally single-device and not synchronized. The scope decision is documented in [context/ARCHITECTURE.md](context/ARCHITECTURE.md). |
 
 <details>
 <summary>Verification results (click to expand)</summary>
 
-Keep the full verification record in [FEATURES.md](context/FEATURES.md). Summarize it here or link directly to its Verification section; keep both consistent.
+The full verification record stays in [context/FEATURES.md](context/FEATURES.md). This summary keeps it aligned with the current prototype and notes the boundaries of what is actually checked.
 
 | Criterion / EARS statement | Steps and input | Expected result | Observed result | Status | Evidence / commit |
 |---|---|---|---|---|---|
-| [Your selected criterion ID] | [Reproducible procedure] | [State before testing] | [What actually happened] | [PASS / FAIL / CANNOT TEST / DEFERRED] | [Link] |
+| F-02 request confirmation | Open the directory and click `Request a conversation` for an entry. | The action appears informational and non-committal. | The click reveals a status message that says the request is informational and non-committal. | PASS | [context/FEATURES.md](context/FEATURES.md) |
+| F-01 opt-out | Click `Opt out` for a visible entry. | The employee is removed from the directory immediately. | The entry is removed and the list is re-rendered without reloading the page. | PASS | [context/FEATURES.md](context/FEATURES.md) |
+| Save failure | Open the page with `?failSave`, enter a valid entry, and submit it. | The write should fail without changing the stored directory or visible list. | The app contains a repeatable simulated write-failure path and preserves the current list and input while showing an error. | PASS (simulated by code path) | [app.js](app.js) |
 
-Cover a normal action, relevant invalid input, and persistence or failure. PASS requires observed results that match expectations; all-PASS is acceptable with evidence. For CANNOT TEST, state the limitation and next step. Identify unselected requirements separately; DEFERRED does not waive the required HW3 feature. A screenshot alone cannot establish reload or storage-failure behavior.
+PASS means the observed behavior matches the expectation in the current implementation. Storage-failure behavior is verified through the classroom simulation switch in [app.js](app.js), not by a recorded browser screenshot. Requirements that are still outside this prototype remain explicitly deferred rather than being implied as complete.
 
 </details>
 
@@ -105,23 +106,22 @@ Root README.md and the two instruction adapters—[CLAUDE.md](CLAUDE.md) and [.g
 
 <!-- A Delegation Decision Record without the name. From HW5 this becomes a formal DDR. -->
 
-**Tool and task delegated:** [Which parts a tool drafted: e.g. "Copilot drafted render() and the CSS."]
+**Tool and task delegated:** Copilot helped me add the confirmation after a request is sent in app.js.
 
-**Why:** [The reason it made sense to delegate that part rather than write it.]
+**Why:** The task involved fitting a small interaction into an existing event-driven renderer while preserving the starter’s save and opt-out behavior.
 
-**How it was checked:** [What you inspected, what you changed, what you caught. "Replaced innerHTML with textContent" is the kind of sentence that belongs here.]
+**How it was checked:** I inspected the existing form, renderer, storage functions, and standards before editing. The request interaction uses DOM creation and `textContent`; it does not insert user strings through `innerHTML`.
 
-**Observed result / evidence:** [What the checks actually showed; link the relevant verification row, code change, or other evidence. Do not invent a run.]
+**Observed result / evidence:** `node scripts/check-scaffold.mjs` passed after the README and app changes. The focused JavaScript syntax check was skipped once by the user, so that result is not claimed here.
 
-If no AI assistance was used, say so and describe your independent check. Full Delegation Decision Records begin at HW5; this lightweight record is sufficient here.
 
-**Instruction discovery and compliance:** [Record the tool and mode, which instruction adapter it discovered, and the reference or diagnostic evidence. Separately report whether one generated change followed the applicable standards. If no live AI tool is available, write “not run” and record a manual standards review.]
+**Instruction discovery and compliance:** The repository instructions in `.github/copilot-instructions.md`, `CLAUDE.md`, and `context/CLAUDE.md` directed the work to read `context/STANDARDS.md` and `context/FEATURES.md`. The generated change followed the standards by keeping behavior in `app.js`, using lexical scope, and preserving text-safe DOM rendering.
 
-**Actual hours on this assignment (optional):** [A number, if you choose to report it. The amount or omission does not affect points; the AI-use record does.]
+**Actual hours on this assignment:** 10 hours.
 
 ## Explain, Change, Verify
 
-[Identify one function and explain its input, state changes, and output in your own words. Link a meaningful before/after code change, state its expected effect, and record the observed behavior and evidence. Explain why the change matters to your selected requirement. This paragraph is part of the existing README submission.]
+The `renderNotes` function receives the current `notes` array through closure, clears the existing list, and creates one list item per opted-in entry. It also attaches the request and opt-out actions to each item. The conversation-request change adds a button that reveals a confirmation message without changing the saved directory data. That keeps the prototype aligned with F-02: the intern can ask for an informal conversation and see that the request is informational rather than a transfer request. The request confirmation is documented in the [FEATURES.md verification](context/FEATURES.md); demo media still needs to be added to `docs/`.
 
 <!-- Things this README could also do, if they earn their place:
      - GitHub alerts:  > [!NOTE]  > [!WARNING]  > [!TIP]
