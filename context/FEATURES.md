@@ -64,9 +64,9 @@ Still open: who decides which employees can opt in; what happens if requests exc
 
 Peer reader: Regina.
 
-Question or confusion to record: The behavior section is very similar to the acceptance section. It does not provide a list that a person can follow to clearly show the clear behavior of the feature. It would be a lot better if that section was revamped to show how the feature operates and what will happen in a sequence. Additionally, the constraints section could be stronger and focus more on the feature selected (F-01). 
+Question or confusion to record: The behavior section is very similar to the acceptance section. It does not provide a list that a person can follow to clearly show the clear behavior of the feature. It would be a lot better if that section was revamped to show how the feature operates and what will happen in a sequence.
 
-Revision to make after the review: I changed the behavior section to show exactly what will happen with the Opt-in directory. I also made sure that it was not just restating what the Acceptance section had. I revamped the constraint section to focus more on the Opt-in Directory and what constraints this feature would have. It makes sense to do this because it makes a tailored to the project and feature chosen. It will also make it easy to follow for those not involved in the development of the project. 
+Revision to make after the review: I changed the behavior section to show exactly what will happen with the Opt-in directory. I also made sure that it was not just restating what the Acceptance section had. 
 
 ## AI assistance
 I used AI to make sure I met all the requirements by running my entry through Copilot and having it compare my assignment to the rubric.
