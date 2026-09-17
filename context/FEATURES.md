@@ -25,12 +25,12 @@ Does not cover: formal transfer/rotation applications, scheduling automation bey
 
 ## Behavior
 1. WHEN an intern views the directory, THE SYSTEM SHALL show only opted-in employees.
-WHEN a request is submitted, THE SYSTEM SHALL label it informational and non-committal to the recipient.
-2. WHEN a request is submitted, THE SYSTEM SHALL notify the intern's manager, framed as standard participation.
-3. WHEN a request is accepted, THE SYSTEM SHALL let both parties schedule within 5 business days.
-4. IF an employee doesn't respond within 3 business days, THEN THE SYSTEM SHALL notify the intern and allow selecting someone else.
-5. WHILE an internship is active, THE SYSTEM SHALL allow requests to more than one line of business.
-6. IF the internship end date passes, THEN THE SYSTEM SHALL disable new requests.
+2. WHEN a request is submitted, THE SYSTEM SHALL label it informational and non-committal to the recipient.
+3. WHEN a request is submitted, THE SYSTEM SHALL notify the intern's manager, framed as standard participation.
+4. WHEN a request is accepted, THE SYSTEM SHALL let both parties schedule within 5 business days.
+5. IF an employee doesn't respond within 3 business days, THEN THE SYSTEM SHALL notify the intern and allow selecting someone else.
+6. WHILE an internship is active, THE SYSTEM SHALL allow requests to more than one line of business.
+7. IF the internship end date passes, THEN THE SYSTEM SHALL disable new requests.
 
 ## Constraints
 - Only current employees and interns of the organization may access the directory; the system must sit behind existing internal authentication.
