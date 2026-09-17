@@ -2,7 +2,7 @@
 
 Status: ACTIVE in Module 3. Read [context/STANDARDS.md](STANDARDS.md) and the selected scope in [context/FEATURES.md](FEATURES.md) before editing. [context/STANDARDS.md](STANDARDS.md) is normative; report and repair conflicting instruction wording.
 
-- In `app.js`, use names that distinguish the directory's roles: `notes` is the saved list, `candidate` is the submitted value, and `nextNotes` is the proposed replacement. Do not collapse these into one variable or reuse the wrong one in a different stage of the flow.
+- In [app.js](../app.js), use names that distinguish the directory's roles: `notes` is the saved list, `candidate` is the submitted value, and `nextNotes` is the proposed replacement. Do not collapse these into one variable or reuse the wrong one in a different stage of the flow.
 - Put user-facing elements and their initial attributes in [index.html](../index.html), visual states in [styles.css](../styles.css), and storage or interaction decisions in [app.js](../app.js). A feature is incomplete if its logic is split across files in a way that hides the behavior.
 - Comment the directory's invariants when they could be accidentally broken. Leave self-evident DOM operations uncommented.
 - Begin each commit message with an action verb and name the user-visible result (for example, "keep note text after a failed save."), never a vague message like "update files."
