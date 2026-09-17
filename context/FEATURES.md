@@ -15,9 +15,9 @@ Does not cover: formal transfer/rotation applications, scheduling automation bey
 
 | Feature ID | Feature | Kano hypothesis | Segment / date | Evidence and reasoning |
 |---|---|---|---|---|
-| F-01 |Opt-in directory of employees willing to have a 15-20 minute informal conversation with an intern from another team.  |Must-be |Both segments - Sept 08 |NT-02 succeeded via self-arranged cold outreach; INT-01 confirmed no formal way exists to find who's approachable. |
+| F-01 |Opt-in directory of employees willing to have a 15-20 minute informal conversation with an intern from another team.  |Must-be |Both segments - Sept 08 |INT-02 succeeded via self-arranged cold outreach; INT-01 confirmed no formal way exists to find who's approachable. |
 | F-02 |Explicit "Information only/no commitment" framing on every conversation request |Performance |Hesitant Explorer - Sept 08 |INT-01: "tell me about your team" felt far less risky than "I want to move." |
-| F-03 |Current manager notified when a cross-team conversation happens, framed as standard program participation with an explicit no-standing-imapct gurantee |Performance |Hesitant Explorer - Sept 08 |INT-02's manager reacted "pretty positively," challenging that visibility itself is the risk. |
+| F-03 |Current manager notified when a cross-team conversation happens, framed as standard program participation with an explicit no-standing-impact gurantee |Performance |Hesitant Explorer - Sept 08 |INT-02's manager reacted "pretty positively," challenging that visibility itself is the risk. |
 | F-04 |Static content pages of typical work per line of business |Indifferent |Both segments - Sept 08 |Already exists informally; INT-02 says shadowing, not reading, confirmed his interest. |
 | F-05 |Formal application required just to start an exploratory conversation |Reverse |Both segments - Sept 08 |Both interviews show the value came from low-commitment, informal contact. Requiring paperwork to even start exploring would reintroduce the friction. |
 | F-06 |Anonymized visibility into how many interns have completed exploratory conversations |Attractive |Both segments - Sept 08 |Targets the perceived-vs-actual risk gap by normalizing exploration. |
