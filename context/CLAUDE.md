@@ -6,7 +6,6 @@ Status: ACTIVE in Module 3. Read context/STANDARDS.md and the selected scope in 
 - Put user-facing elements and their initial attributes in `index.html`, visual states in `styles.css`, and storage or interaction decisions in `app.js`. A feature is incomplete if its logic is split across those boundaries.
 - Comment the directory's invariants when they could be accidentally broken. Leave self-evident DOM operations uncommented.
 - Begin each commit message with an action verb and name the user-visible result (for example, "keep note text after a failed save."), never a vague message like "update files."
-- When rendering user-entered note text, use DOM APIs and `textContent`. Do not use `innerHTML`, `outerHTML`, or `insertAdjacentHTML` on note content.
 
 Colleague test:
 - Who read it?: Regina
