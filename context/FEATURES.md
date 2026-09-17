@@ -51,9 +51,6 @@ The following sequence describes the selected F-01 feature independently of the 
 - The system must retain no conversation content, only the fact that a request was made and its status.
 
 ## Acceptance
-
-These statements define broader product outcomes. They are kept separate from Behavior because Behavior describes how the selected F-01 directory feature works, while Acceptance records whether the overall product meets its intended outcomes.
-
 - WHEN a request is submitted, THE SYSTEM SHALL confirm within 2 seconds.
 - WHEN an intern completes two conversations, THE SYSTEM SHALL show the manager was notified of both and no negative flag was recorded.
 - WHEN an employee opts out, THE SYSTEM SHALL remove them from results within 1 minute.
@@ -65,22 +62,22 @@ Still open: who decides which employees can opt in; what happens if requests exc
 
 ### Reader check
 
-Peer reader: Pending peer review.
+Peer reader: Regina.
 
-Question or confusion to record: Ask a peer whether the numbered Behavior sequence is clear enough to implement independently of the Acceptance section, and whether any handoff question is unclear.
+Question or confusion to record: The behavior section is very similar to the acceptance section. It does not provide a list that a person can follow to clearly show the clear behavior of the feature. It would be a lot better if that section was revamped to show how the feature operates and what will happen in a sequence. Additionally, the constraints section could be stronger and focus more on the feature selected (F-01). 
 
-Revision to make after the review: Record the peer's name, question, and resulting revision here. This placeholder remains until the peer review occurs so that no feedback is invented.
+Revision to make after the review: I changed the behavior section to show exactly what will happen with the Opt-in directory. I also made sure that it was not just restating what the Acceptance section had. I revamped the constraint section to focus more on the Opt-in Directory and what constraints this feature would have. It makes sense to do this because it makes a tailored to the project and feature chosen. It will also make it easy to follow for those not involved in the development of the project. 
 
 ## AI assistance
 I used AI to make sure I met all the requirements by running my entry through Copilot and having it compare my assignment to the rubric.
 
 ## Verification
 
-- WHEN a request is submitted, THE SYSTEM SHALL confirm within 2 seconds. PASS. When an intern clicks on "Request a conversation", a message saying "Conversation request sent. This is informational and non-committal" pops up.
-- WHEN an intern completes two conversations, THE SYSTEM SHALL show the manager was notified of both and no negative flag was recorded. CANNOT TEST YET. This build only implements F-01, the directory; there is no system in place to enforce the manager notifications yet. That will be a later addition.
-- WHEN an employee opts out, THE SYSTEM SHALL remove them from results within 1 minute. PASS. Clicking "Opt out" removes the entry and re-renders the list immediately — well under the 1-minute bound.
-- WHEN the internship ends, THE SYSTEM SHALL disable new requests by the next day. DEFERRED. See ADR-001. I will implement this in the next round.
-- WHEN an exploratory request completes, THE SYSTEM SHALL NOT create a transfer request. CANNOT TEST YET. Since this feature is about the directory, it does not have anything regarding post-conversation behavior. There is no system in place yet about what happens once a conversation occurs.
+- WHEN a request is submitted, THE SYSTEM SHALL confirm within 2 seconds: PASS. When an intern clicks on "Request a conversation", a message saying "Conversation request sent. This is informational and non-committal" pops up.
+- WHEN an intern completes two conversations, THE SYSTEM SHALL show the manager was notified of both and no negative flag was recorded: CANNOT TEST YET. This build only implements F-01, the directory; there is no system in place to enforce the manager notifications yet. That will be a later addition.
+- WHEN an employee opts out, THE SYSTEM SHALL remove them from results within 1 minute: PASS. Clicking "Opt out" removes the entry and re-renders the list immediately, which is well under the 1-minute bound.
+- WHEN the internship ends, THE SYSTEM SHALL disable new requests by the next day: DEFERRED. See ADR-001. I will implement later down the road.
+- WHEN an exploratory request completes, THE SYSTEM SHALL NOT create a transfer request: CANNOT TEST YET. Since this feature is about the directory, it does not have anything regarding post-conversation behavior. There is no system in place yet about what happens once a conversation occurs.
 
 ## Related files
 
