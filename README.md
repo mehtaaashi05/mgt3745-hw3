@@ -90,16 +90,18 @@ PASS means the observed behavior matches the expectation in the current implemen
 
 Read in this order:
 
-SCAFFOLD_MANIFEST.md: explains what carries over from HW2 into HW3, along with a submission checklist
-context/PROJECT.md: the problem and its framing
-context/USERS.md: who this is for
-context/FEATURES.md: what it must do, and verification results
-context/ARCHITECTURE.md: the gate and ADR-001
-context/STANDARDS.md: the rules this code follows
-context/CLAUDE.md: the same rules, for agents
-The scaffold has eleven canonical files in /context: six active files above and five previews: STYLE.md, TOOLS.md, SKILLS.md, EVALS.md, and AGENTS.md. Keep the previews; verification stays in FEATURES.md until EVALS.md activates in Module 5.
+0. [`SCAFFOLD_MANIFEST.md`](SCAFFOLD_MANIFEST.md): explains what carries over from HW2 into HW3, along with a submission checklist
+1. [`context/PROJECT.md`](context/PROJECT.md): the problem and its framing
+2. [`context/USERS.md`](context/USERS.md): who this is for
+3. [`context/FEATURES.md`](context/FEATURES.md): what it must do, and verification results
+4. [`context/ARCHITECTURE.md`](context/ARCHITECTURE.md): the gate and ADR-001
+5. [`context/STANDARDS.md`](context/STANDARDS.md): the rules this code follows
+6. [`context/CLAUDE.md`](context/CLAUDE.md): the same rules, for agents
 
-Root README.md and the two instruction adapters—CLAUDE.md and .github/copilot-instructions.md—are additional files. Copy your HW2 USERS.md and FEATURES.md into /context and revise them using instructor feedback if available; otherwise record a peer criterion check and mark instructor feedback pending. Run node scripts/check-scaffold.mjs to check required file presence; this does not assess content quality.
+The scaffold has **eleven canonical files in `/context`: six active files above and five previews**: [STYLE.md](context/STYLE.md), [TOOLS.md](context/TOOLS.md), [SKILLS.md](context/SKILLS.md), [EVALS.md](context/EVALS.md), and [AGENTS.md](context/AGENTS.md). Keep the previews; verification stays in FEATURES.md until EVALS.md activates in Module 5.
+
+Root README.md and the two instruction adapters—[CLAUDE.md](CLAUDE.md) and [.github/copilot-instructions.md](.github/copilot-instructions.md)—are additional files. Copy your HW2 USERS.md and FEATURES.md into `/context` and revise them using instructor feedback if available; otherwise record a peer criterion check and mark instructor feedback pending. Run `node scripts/check-scaffold.mjs` to check required file presence; this does not assess content quality.
+
 ## AI Use
 
 <!-- A Delegation Decision Record without the name. From HW5 this becomes a formal DDR. -->
